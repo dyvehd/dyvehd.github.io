@@ -3,43 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Course Material</title>
+    <title>Dyvehd's Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .project {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .skill {
+            background-color: #3498db;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #f4f4f4;
+        }
+    </style>
 </head>
 <body>
-    <h1>Enter your key to access the course material</h1>
-    <form id="accessForm">
-        <label for="keyInput">Key:</label>
-        <input type="text" id="keyInput" name="key" required>
-        <button type="submit">Submit</button>
-    </form>
-    <p id="message"></p>
-    <script>
-        const validKeys = {
-            "key123": "https://drive.google.com/link1",  // Example mapping
-            "key456": "https://drive.google.com/link2"
-            // Add more keys and links here
-        };
+    <header>
+        <h1>Welcome to Dyvehd's Portfolio</h1>
+        <p>Software Developer | Open Source Enthusiast | Lifelong Learner</p>
+    </header>
 
-        document.getElementById('accessForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const key = document.getElementById('keyInput').value;
-            const messageElem = document.getElementById('message');
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I'm [Your Name], a passionate software developer with a keen interest in [Your Interests]. I love building [Types of Projects] and contributing to open-source projects.</p>
+        </section>
 
-            if (validKeys[key]) {
-                // Fetch the user's IP address using a free service like ipify
-                const response = await fetch('https://api.ipify.org?format=json');
-                const data = await response.json();
-                const userIP = data.ip;
-                
-                // Log the IP address (here it's just shown in the console, you should send it to a server)
-                console.log(`Key: ${key}, IP: ${userIP}`);
-                
-                // Show the Google Drive link
-                messageElem.innerHTML = `Here is your course link: <a href="${validKeys[key]}" target="_blank">${validKeys[key]}</a>`;
-            } else {
-                messageElem.innerHTML = 'Invalid key, please try again.';
-            }
-        });
-    </script>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills">
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">Python</span>
+                <span class="skill">Git</span>
+                <!-- Add more skills as needed -->
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Project Name 1</h3>
+                <p>Description of the project. What it does, technologies used, and your role in it.</p>
+                <a href="#">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Project Name 2</h3>
+                <p>Description of another project. Highlight your achievements and the impact of the project.</p>
+                <a href="#">View Project</a>
+            </div>
+            <!-- Add more projects as needed -->
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+            <p>Email: your.email@example.com</p>
+            <p>GitHub: <a href="https://github.com/dyvehd">github.com/dyvehd</a></p>
+            <p>LinkedIn: <a href="#">Your LinkedIn Profile</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Dyvehd. All rights reserved.</p>
+    </footer>
 </body>
 </html>
