@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Course Material</title>
+</head>
+<body>
+    <h1>Enter your key to access the course material</h1>
+    <form id="accessForm">
+        <label for="keyInput">Key:</label>
+        <input type="text" id="keyInput" name="key" required>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="message"></p>
+    <script>
+        const validKeys = {
+            "key123": "https://drive.google.com/link1",  // Example mapping
+            "key456": "https://drive.google.com/link2"
+            // Add more keys and links here
+        };
+
+        document.getElementById('accessForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const key = document.getElementById('keyInput').value;
+            const messageElem = document.getElementById('message');
+
+            if (validKeys[key]) {
+                // Fetch the user's IP address using a free service like ipify
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                const userIP = data.ip;
+                
+                // Log the IP address (here it's just shown in the console, you should send it to a server)
+                console.log(`Key: ${key}, IP: ${userIP}`);
+                
+                // Show the Google Drive link
+                messageElem.innerHTML = `Here is your course link: <a href="${validKeys[key]}" target="_blank">${validKeys[key]}</a>`;
+            } else {
+                messageElem.innerHTML = 'Invalid key, please try again.';
+            }
+        });
+    </script>
+</body>
+</html>
